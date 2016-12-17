@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Ed Wallet</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> -->
+<link rel="stylesheet" href="./css/gooey.min.css">
+<link rel="stylesheet" href="./css/livedemo.css">
+<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/ripple.css">
+<link rel="stylesheet" href="./css/bootstrap-slider.css">
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="row height150"></div>
+		
+		<div class="row">
+			<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+			<ul class="nav  nav-tabs">
+				<li class="active"><a data-toggle="tab" href="#home">WALLET</a></li>
+				<li><a data-toggle="tab" href="#menu1">SEND</a></li>
+				<li><a data-toggle="tab" href="#menu2">CONTRACTS</a></li>
+			</ul>
+			</div>
+			<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 totalEds">
+				<p>Balance <span class="currency">Earth Dollar: </span><span class="bigger">0</span><p>
+				<span id="inptBllnc">220</span>
+			</div>
+  		</div>
+
+
+<!-- wallet section -->		
+		<div class="tab-content">
+	    	<div id="home" class="tab-pane fade in active">
+	      		<div class="row">
+	      			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mBottom1">
+	      				<h3>ACCOUNTS OVERVIEW</h3>
+	      			</div>
+	      		</div>
+	      		<div class="row">
+	      			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+	      				<div class="fileUpload btn btn-primary" data-ripple="#fff">
+    						<span>Create Account</span>
+    						<input type="file" class="upload" />
+						</div>
+					
+	      			</div>
+	      			<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+	      				
+	      			</div>
+	      			<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 h200 bLeft">
+	      				<p class="rColComment mTop4">You do not have an account yet</p>
+	      				<article class="separator"></article>
+	      				<p class="rColComment mTop4">No transaction recorded</p>
+	      			</div>
+	      		</div>
+	    	</div>
+    	
+<!-- send section -->	    	
+	    	<div id="menu1" class="tab-pane fade">
+	      		<div class="row">
+	      			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mBottom1">
+	      				<h3>SEND EDs</h3>
+	      			</div>
+	      		</div>
+	      		
+	      		<div class="row">
+	      			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+	      				<label>Amount</label>
+	      			</div>
+	      		
+
+	      			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+	      				<label>Account number</label>
+	      			</div>
+	
+	
+	      			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+	      				<label>Name of the recipient</label>
+	      			</div>
+				</div>
+				
+	      		<div class="row inputHeight send1">
+	      			<form>
+		      			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">	
+							<div class="input-group">
+								<div class="row"></div>						
+						    	<span class="input-group-addon"><img src="./images/abacus.png"></span>
+						      	<input id="ammount" type="text" class="form-control input-lg" name="" placeholder="Ammount" oninput="sendAmmount()">						
+							</div>
+		      			</div>
+		      			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+					    	<div class="input-group">
+	      						<span class="input-group-addon"><img src="./images/send.png"></span>
+	      						<input id="" type="text" class="form-control input-lg" name="password input-lg" placeholder="Sender">
+	    					</div>
+	   					</div>
+		      			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+	  				    	<div class="input-group">
+					      		<span class="input-group-addon"><img src="./images/receive.png"></span>
+					      		<input id="repName" type="text" class="form-control input-lg" name="msg" placeholder="Recepient" oninput="recepientName()">
+	    					</div>
+		      			</div>
+	      			</form>
+	      		</div>
+				
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<span class="goLeft2 chngCurrnc">Change Currency</span>
+				  		<nav id="gooey-h" class="goLeft2">
+							<input type="checkbox" class="menu-open" name="menu-open2" id="menu-open2">
+							<label class="open-button" for="menu-open2">
+						    	<span class="burger burger-1"></span>
+						    	<span class="burger burger-2"></span>
+						    	<span class="burger burger-3"></span>
+						  	</label>
+
+						  	<a href="#" class="gooey-menu-item" onclick="writeFiat(fiat.EURO)"><img src="./images/euro.png"></a>
+						  	<a href="#" class="gooey-menu-item" onclick="writeFiat(fiat.POUND)"><img src="./images/pound.png"></a>
+						  	<a href="#" class="gooey-menu-item" onclick="writeFiat(fiat.DOLLAR)"><img src="./images/dollar.png"></a>
+						  	<a href="#" class="gooey-menu-item" onclick="writeFiat(fiat.YEN)"><img src="./images/yen.png"></a>
+						  	<a href="#" class="gooey-menu-item" onclick="writeFiat(fiat.BITCOIN)"><img src="./images/bit-coin.png"></a>
+						  	<a href="#" class="gooey-menu-item" onclick="writeFiat(fiat.EARTHDOLLAR)"><img src="./images/bit-coin.png"></a>
+						</nav> 
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 more">
+					    <div class="span4 collapse-group">
+					        <button type="submit" onclick="accordeon()" class="btn btn-primary btn-md triggerOpen" href="#" target="_blank" role="button" data-ripple="#fff">More options</button>
+					   		<p class="collapse mTop20">Add more options<br/>
+					   			<textarea></textarea>
+					   		</p>
+					    </div>
+				    </div>
+				</div>
+
+				<div class="row mTop30">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<p>Select fee:</p>
+					</div>
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">	
+					  	<div class="jquery-script-clear"></div>
+					  		<span class="bold">Cheaper</span>
+							<input id="ex3" type="text" data-slider-min="-5" data-slider-max="20" data-slider-step="1" data-slider-value="3">
+							<span class="bold">Faster</span>	
+							<p id="ex3CurrentSliderValLabel" class="mTop20">Current Slider Value: <span id="ex3SliderVal">3</span></p>			
+					</div>
+			   </div>
+
+				<div class="row mTop30">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<p>TOTAL :</p>
+						<span id="outputBllnc" class="divCurrency"> </span><span> </span><span class="currency"> Earth Dollard</span>
+					</div>
+				</div>
+
+	      		<div class="row">
+	      			<div class="col-xs-7 col-sm-7 col-md-17 col-lg-7 ajustWell">
+	      				<div class="well">
+	      					<p>You want to send <b><span id="outputSent">0 </span><span class="currency"> USD</span></b> 
+	      						in Earth Dollar to <span id="sendTo">(Receiver's name)</span> using exchange rates from	      						
+	      						<a href="http://cryptocompare.com" target="_blank">cryptocompare.com</a></p>
+	      						<p>Which is currently an equivalent of <span>0<b> Earth Dollar</b></span></p>
+	      				</div>
+	      			</div>
+	      		</div>
+	      		      		
+	      		<div class="row">
+      				<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 sendMoney">
+      					<button type="submit" class="btn btn-default" data-ripple="#fff">Send</button>
+	      			</div>
+	      		</div>
+	    	</div>
+	    	
+<!-- contract section-->    	
+	    	<div id="menu2" class="tab-pane fade contracts">
+	      		<div class="row">
+	      			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mBottom1">
+	      				<h3>CONTRACTS</h3>
+	      			</div>
+	      		</div>
+	      		
+	      		<div id="hide1" onclick="show1('comment1')">
+		      		<div  class="row contract1 mBotton40 mLeft12" >
+		      			<div id="hideThis1" class="row">
+			      			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 contractButton">
+				      			<span id="clickMeId"><img src="./images/contracts.png" />&nbsp;&nbsp;
+				      			DEPLOY NEW CONTRACT</span>
+			      			</div>
+		      			</div>
+		      			<div id="comment1">
+		      				<h3>Deploy contract</h3>
+		      				
+			      			<div class="row inputHeight">
+	      						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+						    		<div class="input-group">
+	      								<span class="input-group-addon"><img src="./images/send.png"></span>
+	      								<input id="" type="text" class="form-control input-lg" name="password input-lg" placeholder="Sender">
+	    							</div>
+	      						</div>
+	      						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+									<div class="input-group">
+										<div class="row"></div>						
+						    			<span class="input-group-addon"><img src="./images/abacus.png"></span>
+						      			<input id="ammount2" type="text" class="form-control input-lg" name="" placeholder="Ammount" oninput="sendAmmount2()">						
+									</div>
+	      						</div>
+	      						<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+	      							<p>0.00 <span class="currency">Earth Dollar: </span> <span>(0.00 <span>ETHER</span>)</span></p>
+	      						</div>
+	      					</div>
+	      					
+	      					<div class="row wellOutput">
+	      						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 well well-sm">
+	      							<p>You want to send <b><span id="outputSent2">0 </span><span class="currency"> USD</span></b> in Earth Dollar</p>
+	      						</div>
+	      					</div>
+	      					
+	      					<div class="row">
+	      						<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+							  		<ul class="nav nav-pills">
+									    <li class="active"><a data-toggle="pill" href="#byteCode">SOLIDITY CONTRACT SOURCE CODE</a></li>
+									    <li><a data-toggle="pill" href="#sourceCode">CONTRACT BY CODE</a></li>						
+									</ul>
+									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 noLeft">
+										<div class="tab-content">
+										    <div id="byteCode" class="tab-pane fade in active">
+										    	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 textWidth">
+										      		<textarea name="textfield6" id="textfield4" class="text"></textarea>
+										    	</div>
+										    </div>
+										    <div id="sourceCode" class="tab-pane fade">
+										    	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 textWidth">
+										      		<textarea name="textfield6" id="textfield4" class="text"></textarea>
+										    	</div>
+										    </div>
+										</div>
+									</div>
+									
+
+	      						</div>
+	      						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 mTop57">
+	      							<p class="rColComment">Put the source code you want here. You can find many examples of contracts the <a href="http://ethereum.org" target="_blank">ethereum.org</a></p>
+	      							<ul>
+	      								<li><a href="https://ethereum.org/token#the-code" target="_blank">Build a token</a></li>
+	      								<li><a href="https://ethereum.org/crowdsale#the-code" target="_blank">Start a crowdsale</a></li>
+	      								<li><a href="https://ethereum.org/dao#the-code" target="_blank">Create a blockchain organization</a></li>
+	      								
+	      							</ul>
+	      						</div>
+	      					</div>
+									
+							<div class="row mTop30">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<p>Select fee:</p>
+								</div>
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">	
+								  	<div class="jquery-script-clear"></div>
+								  		<span class="bold">Cheaper</span>
+										<input id="ex4" type="text" data-slider-min="-5" data-slider-max="20" data-slider-step="1" data-slider-value="3">
+										<span class="bold">Faster</span>	
+										<p id="ex4CurrentSliderValLabel" class="mTop20">Current Slider Value: <span id="ex4SliderVal">3</span></p>			
+								</div>
+						   </div>
+
+		      				<div class="row">
+		      					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		      						<p>TOTAL:</p>
+		      						<span>0.00 <span class="currency">Earth Dollar </span></span>
+		      					</div>
+		      					
+		      				</div>						      					
+		      						      						      						      						      		
+		      				<div class="row mTop20">	
+		      					<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">	      			
+		      						<a href="#" onclick="toWallet()">Back to wallet</a>
+		      					</div>
+		      					<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 sendMoney">
+		      						<button type="submit" class="btn btn-default mRight30" data-ripple="#fff">Deploy</button>
+		      					</div>
+		      				</div>
+		      			</div>
+		      		</div>
+	      		</div>
+	      		
+	      		
+	      		<div class="row contract2 mBotton40 mLeft0">		      			
+      				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 contractButton" data-toggle="modal" data-target="#myModal">
+		      			<span><img src="./images/contracts-watch.png"/ >&nbsp;&nbsp;
+		      			WATCH CONTRACT</span>
+		      		</div>
+	      			<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+	      				<p class="rColComment">In order to watch and interact with a contract already deployed on the blockchain ou need to know its address and description of its 
+	      				interface in JSON format.</p>
+	      			</div>
+	      		</div>
+
+
+				    <!-- Modal -->
+				    <div class="modal fade" id="myModal" role="dialog">
+				    	<div class="modal-dialog">    
+	      				<!-- Modal content-->
+					    	<div class="modal-content">
+	        					<div class="modal-header">
+	          						<button type="button" class="close" data-dismiss="modal">&times;</button>
+	          						<h2 class="modal-title">Watch token</h2>
+	        					</div>
+	        					<div class="modal-body">
+	        						<div class="left15">
+		        						<form action="">
+								        	<label>Contract Name</label>
+						        			<input class="width100" type="text" placeholder="name this contract">
+					        				<label>Contract Adress</label>
+					        				<input class="width100" type="text" placeholder="0x00000...">
+					        				<label>JSON Interface</label>
+					        				<textarea></textarea>								        	
+						        			<input class="sendModal" type="submit" value="Send Contract">							        		
+							        	</form>
+						        	</div>
+	        					</div>
+	        					<div class="modal-footer">
+						          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        					</div>
+					       </div>      
+	    				</div>
+	  				</div> 
+			
+
+
+		      	
+	      		<div>
+		      		<div class="row contract3 mBotton40 mLeft0">
+	      				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 contractButton" data-toggle="modal" data-target="#myModal2">
+			      			<span><img src="./images/contracts-token.png" />&nbsp;&nbsp;
+			      			WATCH TOKEN</span>
+			      		</div>
+		      			<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+		      				<p  class="rColComment">Tokens are currencies and other fungibles built on the Earth Dollar platform. In order for accounts to watch for tokens and send them, 
+		      					you have to add their adress to this list. You can create your own token by simply modifying 
+		      					<a href="http://ethereum.github.io/browser-solidity/#gist=319854ee93812ef304ec2af0317b3c74&version=soljson-v0.4.6+commit.2dabbdf0.js" target="_blank">
+<!-- need to be fix -->		      	this example of a custom token contract</a> or learning more about <a href="https://www.ethereum.org/token#the-code" target="_blank">Earth Dollar Tokens</a>.</p>
+		      			</div>
+		      		</div>
+		      		
+		      		
+				    <!-- Modal -->
+				    <div class="modal fade" id="myModal2" role="dialog">
+				    	<div class="modal-dialog">    
+	      				<!-- Modal content-->
+					    	<div class="modal-content">
+	        					<div class="modal-header">
+	          						<button type="button" class="close" data-dismiss="modal">&times;</button>
+	          						<h2 class="modal-title">Watch token</h2>
+	        					</div>
+	        					<div class="modal-body">
+        							<div class="left15">
+		        						<form action="">
+								        	<label>Contract Name</label>
+								        	<input class="width100" type="text" placeholder="name this contract">
+								        	<label>Contract Adress</label>
+								        	<input class="width100" type="text" placeholder="0x00000...">
+								        	<label>JSON Interface</label>
+								        	<textarea></textarea>
+								        	<input class="sendModal" type="submit" value="Send Contract">
+							        	</form>
+	        						</div>
+	        					</div>
+	        					<div class="modal-footer">
+						          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        					</div>
+					       </div>      
+	    				</div>
+	  				</div>  
+		      	</div>
+		      	
+	    	</div>
+	  	</div>
+	</div>
+ <!-- END OF CONTAINER -->
+
+
+<!--<h1>jQuery Bootstrap Slider Plugin Examples</h1>
+<h2>Single value slider</h2>
+<input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+<h2>Range Slider</h2>
+<b>€ 10</b> <input id="ex2" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/> <b>€ 1000</b>
+<h2>Slide event</h2> -->
+
+<!--<h2>Custom tick marks.</h2>
+<input id="ex4" type="text" data-slider-ticks="[0, 100, 200, 300, 400]" data-slider-ticks-snap-bounds="30" data-slider-ticks-labels='["$0", "$100", "$200", "$300", "$400"]'/>
+<h2>Coloring the low and high track segments</h2> -->
+<!-- Single-value slider, high track: -->
+<!-- <input id="ex5a" type="text"/><br/> -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="./js/bootstrap-slider.js"></script>
+<script src="./js/gooey.min.js"></script>
+<script src="./js/ripple.js"></script>
+
+
+
+<script>
+
+	/* function that reload page */
+	
+	function toWallet() {
+		location.reload();
+	}
+
+	
+	/* function that makes divs appears and disapears */
+	
+	function show1(target){
+		document.getElementById(target).style.display = 'block';
+		
+		document.getElementById("clickMeId2").style.display = 'none';
+		document.getElementById("clickMeId3").style.display = 'none'; 
+		
+		document.getElementById("hideThis1").style.display = 'none';
+		document.getElementById("hideThis2").style.display = 'none';
+		document.getElementById("hideThis3").style.display = 'none';
+		
+		document.getElementById("hide1").style.background = 'transparent';
+		document.getElementById("hide1").style.fontWeight = 'normal';
+	}
+	function hide(target){
+		document.getElementById(target).style.display = 'none';
+		document.getElementById("clickMeId").style.display = 'block';
+	}
+	
+	
+	/* jQuery function for collapsing div*/
+	
+	function accordeon(){
+		$('.row .triggerOpen').on('click', function(e) {
+		    e.preventDefault();
+		    var $this = $(this);
+		    var $collapse = $this.closest('.collapse-group').find('.collapse');
+		    $collapse.collapse('toggle');
+		});
+	}
+
+
+	/* functions that output a string to html elements taged with a class name */
+	
+	const fiat = {
+			EURO : "euro ",
+			POUND : "pound ",
+			DOLLAR : "dollar ",
+			YEN : "yen ",
+			BITCOIN : "bitcoin ",
+			EARTHDOLLAR : "earth dollar "
+	};
+
+	function writeFiat(currentCurrency){
+		var divs = document.getElementsByClassName('currency');
+			for (var i = 0; i < divs.length; i++) {
+    			divs[i].innerHTML = currentCurrency;
+			}
+	}
+
+
+	/* functions that receive the value of an input field and output data in an html element */
+
+	function sendAmmount() {
+	    var sent = document.getElementById("ammount").value;
+	    document.getElementById("outputSent").innerHTML = sent;
+	}
+		function sendAmmount2() {
+	    var sent = document.getElementById("ammount2").value;
+	    document.getElementById("outputSent2").innerHTML = sent;
+	}
+	
+	window.onload = currentBallance;
+	function currentBallance(){
+		var myBallance = document.getElementById("inptBllnc").value;
+		document.getElementById("outputBllnc").innerHTML = myBallance;
+	}
+	
+	
+/* function that receives astring from an input field and output data in an html element */
+
+	function recepientName() {
+	    var fName = document.getElementById("repName").value;
+	    document.getElementById("sendTo").innerHTML = fName + ",";
+	}
+
+    $(function($) {
+        $("#gooey-upper").gooeymenu({
+            bgColor: "transparent",
+            
+            horizontal: {
+                menuItemPosition: "glue"
+            },
+            vertical: {
+                menuItemPosition: "glue",
+                direction: "down"
+            },
+
+            margin: "small",
+            size: 90,
+            bounce: true,
+            bounceLength: "small",
+            transitionStep: 100,
+            hover: "#e55b5b"
+            });
+		$("#gooey-h").gooeymenu({
+
+            style: "horizontal",
+            horizontal: {
+                menuItemPosition: "spaced"
+            },
+            vertical: {
+                menuItemPosition: "glue",
+                direction: "down"
+            },
+            circle: {
+                radius: 90
+            },
+            margin: "small",
+            size: 40,
+            bounce: true,
+            bounceLength: "small",
+            transitionStep: 100,
+            hover: "#5dbb89"
+            });
+
+   		$("#gooey-API").gooeymenu({
+            bgColor: "#68d099",
+            contentColor: "white",
+            style: "circle",
+            circle: {
+                radius: 85
+            },
+            margin: "small",
+            size: 70,
+            bounce: true,
+            bounceLength: "small",
+            transitionStep: 100,
+            hover: "#5dbb89",
+            open: function() {
+                $(this).find(".gooey-menu-item").css("background-color", "steelblue");
+                $(this).find(".open-button").css("background-color", "steelblue");
+            },
+            close: function() {
+                $(this).find(".gooey-menu-item").css("background-color", "#ffdf00");
+                $(this).find(".open-button").css("background-color", "#ffdf00");
+                }
+            });
+        });
+
+
+	/* jQuery functions for sliders input */
+
+	$("#ex3").slider();
+	$("#ex3").on("slide", function(slideEvt) {
+		$("#ex3SliderVal").text(slideEvt.value);
+	});
+	
+	$("#ex4").slider();
+	$("#ex4").on("slide", function(slideEvt) {
+		$("#ex4SliderVal").text(slideEvt.value);
+	});
+	
+</script>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
