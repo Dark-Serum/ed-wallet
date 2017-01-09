@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <title>Ed Wallet</title>
@@ -8,36 +8,35 @@
 <!-- <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> -->
 <link rel="stylesheet" href="./css/gooey.min.css">
 <link rel="stylesheet" href="./css/livedemo.css">
-<link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/ripple.css">
 <link rel="stylesheet" href="./css/bootstrap-slider.css">
-<!-- TESTING -->
+<link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
+	<div class="row height150">
+		<div class="col-xs-4 col-xs-push-6 col-sm-4 col-sm-push-6 col-md-4 col-md-push-6 col-lg-4 col-lg-push-6 totalEds">
+			<p>Balance <span class="currency">Earth Dollar: </span><span>0</span><p>
+		</div>
+	</div>	
 	<div class="container">
-		<div class="row height150"></div>
-		
 		<div class="row">
-			<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-			<ul class="nav  nav-tabs">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<ul class="nav  nav-tabs nav-justified">
 				<li class="active"><a data-toggle="tab" href="#home">WALLET</a></li>
 				<li><a data-toggle="tab" href="#menu1">SEND</a></li>
 				<li><a data-toggle="tab" href="#menu2">CONTRACTS</a></li>
 			</ul>
 			</div>
-			<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 totalEds">
-				<p>Balance <span class="currency">Earth Dollar: </span><span class="bigger">0</span><p>
-				<span id="inptBllnc">220</span>
-			</div>
+
   		</div>
 
 
 <!-- wallet section -->		
 		<div class="tab-content">
-	    	<div id="home" class="tab-pane fade in active">
+	    	<div id="home" class="tab-pane fade in active maxHeight">
 	      		<div class="row">
-	      			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mBottom1">
+	      			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mBottom1 style1">
 	      				<h3>ACCOUNTS OVERVIEW</h3>
 	      			</div>
 	      		</div>
@@ -49,48 +48,50 @@
 						</div>
 					
 	      			</div>
-	      			<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+	      			<div class="smallerCol col-xs-1 col-sm-1 col-md-1 col-lg-1">
 	      				
 	      			</div>
-	      			<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 h200 bLeft">
-	      				<p class="rColComment mTop4">You do not have an account yet</p>
-	      				<article class="separator"></article>
-	      				<p class="rColComment mTop4">No transaction recorded</p>
+	      			<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 h200 bLeft mTop10 style3 style4 borderEarth">
+	      				<div class="topIntro">
+		      				<p class="rColComment">You do not have an account yet</p>
+		      				<article class="separator"></article>
+		      				<p class="rColComment">No transaction recorded</p>
+	      				</div>
 	      			</div>
 	      		</div>
 	    	</div>
     	
 <!-- send section -->	    	
-	    	<div id="menu1" class="tab-pane fade">
+	    	<div id="menu1" class="tab-pane fade maxHeight">
 	      		<div class="row">
-	      			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mBottom1">
+	      			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mBottom1 style1">
 	      				<h3>SEND EDs</h3>
 	      			</div>
 	      		</div>
 	      		
-	      		<div class="row">
-	      			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+	      		<div class="row styleLabel styleLabel2">
+	      			<div class="customWidth col-xs-4 col-sm-4 col-md-4 col-lg-4 style3 mRight14">
 	      				<label>Amount</label>
 	      			</div>
 	      		
 
-	      			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+	      			<div class="customWidth col-xs-4 col-sm-4 col-md-4 col-lg-4 style3 mLeft14 mRight14">
 	      				<label>Account number</label>
 	      			</div>
 	
 	
-	      			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+	      			<div class="customWidth col-xs-4 col-sm-4 col-md-4 col-lg-4 style3 mLeft14">
 	      				<label>Name of the recipient</label>
 	      			</div>
 				</div>
 				
-	      		<div class="row inputHeight send1">
-	      			<form>
+	      		<div class="row inputHeight send1 styleInput">
+	      			<form class="">
 		      			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">	
 							<div class="input-group">
 								<div class="row"></div>						
 						    	<span class="input-group-addon"><img src="./images/abacus.png"></span>
-						      	<input id="ammount" type="text" class="form-control input-lg" name="" placeholder="Ammount" oninput="sendAmmount()">						
+						      	<input id="ammount" type="text" class="form-control input-lg " name="" placeholder="Ammount" oninput="sendAmmount()">						
 							</div>
 		      			</div>
 		      			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
@@ -110,7 +111,7 @@
 				
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<span class="goLeft2 chngCurrnc">Change Currency</span>
+						<span class="goLeft2 chngCurrnc ">Change Currency</span>
 				  		<nav id="gooey-h" class="goLeft2">
 							<input type="checkbox" class="menu-open" name="menu-open2" id="menu-open2">
 							<label class="open-button" for="menu-open2">
@@ -140,48 +141,55 @@
 				    </div>
 				</div>
 
-				<div class="row mTop30">
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<p>Select fee:</p>
-					</div>
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">	
-					  	<div class="jquery-script-clear"></div>
-					  		<span class="bold">Cheaper</span>
-							<input id="ex3" type="text" data-slider-min="-5" data-slider-max="20" data-slider-step="1" data-slider-value="3">
-							<span class="bold">Faster</span>	
-							<p id="ex3CurrentSliderValLabel" class="mTop20">Current Slider Value: <span id="ex3SliderVal">3</span></p>			
-					</div>
-			   </div>
+				<div class="sendMoney">
+					<div class="row mTop30 mLeft0">
+						<div class="col-xs12 col-sm-6 col-md-6 col-lg-6 style3">
+							<div class="">
+								<p class="style6">Select fee:</p>
+							</div>
+							<div class="">	
+							  	<div class="jquery-script-clear"></div>
+							  		<span class="bold style4">Cheaper</span>
+									<input id="ex3" type="text" data-slider-min="-5" data-slider-max="20" data-slider-step="1" data-slider-value="3">
+									<span class="bold style4">Faster</span>	
+									<p id="ex3CurrentSliderValLabel" class="mTop20 style4 style6">Current Slider Value: <span id="ex3SliderVal">3</span></p>			
+							</div>
+						</div>
+				    </div>
 
-				<div class="row mTop30">
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<p>TOTAL :</p>
-						<span id="outputBllnc" class="divCurrency"> </span><span> </span><span class="currency"> Earth Dollard</span>
-					</div>
-				</div>
 
-	      		<div class="row">
-	      			<div class="col-xs-7 col-sm-7 col-md-17 col-lg-7 ajustWell">
-	      				<div class="well">
-	      					<p>You want to send <b><span id="outputSent">0 </span><span class="currency"> USD</span></b> 
-	      						in Earth Dollar to <span id="sendTo">(Receiver's name)</span> using exchange rates from	      						
-	      						<a href="http://cryptocompare.com" target="_blank">cryptocompare.com</a></p>
-	      						<p>Which is currently an equivalent of <span>0<b> Earth Dollar</b></span></p>
-	      				</div>
-	      			</div>
-	      		</div>
+					<div class="row mTop30 mLeft0">
+						<div class="style3 col-xs12 col-sm-6 col-md-6 col-lg-6 ">
+							<p class="style6">TOTAL :</p>
+							<span id="outputBllnc" class="divCurrency style6"> </span><span> </span><span class="currency style6"> Earth Dollard</span>
+						</div>
+					</div>
+
+
+		      		<div class="row mLeft0">
+		      			<div class="ajustWell  ">
+		      				<div class="well style7 col-xs12 col-sm-6 col-md-6 col-lg-6">
+		      					<p>You want to send <b><span id="outputSent">0 </span><span class="currency"> USD</span></b> 
+		      						in Earth Dollar to <span id="sendTo">(Receiver's name)</span> using exchange rates from	      						
+		      						<a href="http://cryptocompare.com" target="_blank">cryptocompare.com</a></p>
+		      						<p>Which is currently an equivalent of <span>0<b> Earth Dollar</b></span></p>
+		      				</div>
+		      			</div>
+		      		</div>
 	      		      		
-	      		<div class="row">
-      				<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 sendMoney">
-      					<button type="submit" class="btn btn-default" data-ripple="#fff">Send</button>
-	      			</div>
-	      		</div>
+	      		      		
+		      		<div class="row">
+	      				<div class="col-xs12 col-sm-6 col-md-6 col-lg-6 sendMoney noPadRight">
+	      					<button type="submit" class="btn btn-default" data-ripple="#fff">Send</button>
+		      			</div>
+		      		</div>
+		      	</div>
 	    	</div>
 	    	
 <!-- contract section-->    	
-	    	<div id="menu2" class="tab-pane fade contracts">
+	    	<div id="menu2" class="tab-pane fade contracts maxHeight">
 	      		<div class="row">
-	      			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mBottom1">
+	      			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mBottom1 style1">
 	      				<h3>CONTRACTS</h3>
 	      			</div>
 	      		</div>
@@ -197,7 +205,7 @@
 		      			<div id="comment1">
 		      				<h3>Deploy contract</h3>
 		      				
-			      			<div class="row inputHeight">
+			      			<div class="row inputHeight styleInput">
 	      						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
 						    		<div class="input-group">
 	      								<span class="input-group-addon"><img src="./images/send.png"></span>
@@ -216,8 +224,8 @@
 	      						</div>
 	      					</div>
 	      					
-	      					<div class="row wellOutput">
-	      						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 well well-sm">
+	      					<div class="row wellOutput style3">
+	      						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 well well-sm style6">
 	      							<p>You want to send <b><span id="outputSent2">0 </span><span class="currency"> USD</span></b> in Earth Dollar</p>
 	      						</div>
 	      					</div>
@@ -245,8 +253,8 @@
 									
 
 	      						</div>
-	      						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 mTop57">
-	      							<p class="rColComment">Put the source code you want here. You can find many examples of contracts the <a href="http://ethereum.org" target="_blank">ethereum.org</a></p>
+	      						<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 mTop57 style3 ">
+	      							<p class="rColComment style6">Put the source code you want here. You can find many examples of contracts the <a href="http://ethereum.org" target="_blank">ethereum.org</a></p>
 	      							<ul>
 	      								<li><a href="https://ethereum.org/token#the-code" target="_blank">Build a token</a></li>
 	      								<li><a href="https://ethereum.org/crowdsale#the-code" target="_blank">Start a crowdsale</a></li>
@@ -256,23 +264,23 @@
 	      						</div>
 	      					</div>
 									
-							<div class="row mTop30">
+							<div class="row mTop30 style3">
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-									<p>Select fee:</p>
+									<p class="style6">Select fee:</p>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">	
 								  	<div class="jquery-script-clear"></div>
-								  		<span class="bold">Cheaper</span>
+								  		<span class="bold style6">Cheaper</span>
 										<input id="ex4" type="text" data-slider-min="-5" data-slider-max="20" data-slider-step="1" data-slider-value="3">
-										<span class="bold">Faster</span>	
-										<p id="ex4CurrentSliderValLabel" class="mTop20">Current Slider Value: <span id="ex4SliderVal">3</span></p>			
+										<span class="bold style6">Faster</span>	
+										<p id="ex4CurrentSliderValLabel style6" class="mTop20">Current Slider Value: <span id="ex4SliderVal">3</span></p>			
 								</div>
 						   </div>
 
-		      				<div class="row">
+		      				<div class="row style3">
 		      					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		      						<p>TOTAL:</p>
-		      						<span>0.00 <span class="currency">Earth Dollar </span></span>
+		      						<p class="style6">TOTAL:</p>
+		      						<span class="style6">0.00 <span class="currency">Earth Dollar </span></span>
 		      					</div>
 		      					
 		      				</div>						      					
@@ -295,8 +303,8 @@
 		      			<span><img src="./images/contracts-watch.png"/ >&nbsp;&nbsp;
 		      			WATCH CONTRACT</span>
 		      		</div>
-	      			<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-	      				<p class="rColComment">In order to watch and interact with a contract already deployed on the blockchain ou need to know its address and description of its 
+	      			<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 style3">
+	      				<p class="rColComment style6">In order to watch and interact with a contract already deployed on the blockchain ou need to know its address and description of its 
 	      				interface in JSON format.</p>
 	      			</div>
 	      		</div>
@@ -312,7 +320,7 @@
 	          						<h2 class="modal-title">Watch token</h2>
 	        					</div>
 	        					<div class="modal-body">
-	        						<div class="left15">
+	        						<div class="left15 styleInput">
 		        						<form action="">
 								        	<label>Contract Name</label>
 						        			<input class="width100" type="text" placeholder="name this contract">
@@ -340,8 +348,8 @@
 			      			<span><img src="./images/contracts-token.png" />&nbsp;&nbsp;
 			      			WATCH TOKEN</span>
 			      		</div>
-		      			<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-		      				<p  class="rColComment">Tokens are currencies and other fungibles built on the Earth Dollar platform. In order for accounts to watch for tokens and send them, 
+		      			<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 style3">
+		      				<p  class="rColComment style6">Tokens are currencies and other fungibles built on the Earth Dollar platform. In order for accounts to watch for tokens and send them, 
 		      					you have to add their adress to this list. You can create your own token by simply modifying 
 		      					<a href="http://ethereum.github.io/browser-solidity/#gist=319854ee93812ef304ec2af0317b3c74&version=soljson-v0.4.6+commit.2dabbdf0.js" target="_blank">
 <!-- need to be fix -->		      	this example of a custom token contract</a> or learning more about <a href="https://www.ethereum.org/token#the-code" target="_blank">Earth Dollar Tokens</a>.</p>
@@ -385,6 +393,7 @@
  <!-- END OF CONTAINER -->
 
 
+
 <!--<h1>jQuery Bootstrap Slider Plugin Examples</h1>
 <h2>Single value slider</h2>
 <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
@@ -403,7 +412,6 @@
 <script src="./js/bootstrap-slider.js"></script>
 <script src="./js/gooey.min.js"></script>
 <script src="./js/ripple.js"></script>
-
 
 
 <script>
