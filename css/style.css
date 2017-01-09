@@ -1,22 +1,62 @@
 
 /* Earth dollar CSS 2016.12.03 */
-
+/* Palette couleur: 
+ * 
+ *  Yellow : #FAEE87  rgba(250,238,135,0.4)*/
+ /* blue: rgba(88,124,199,0.2) 587CC7 */	
+  /* brown: rgba(88,124,99,0.2) */	
 /* fonts' call */
 @font-face {
-    font-family:OLORT___;
-    src: url(".././fonts/oloron/OLORT___.TTF");
+    font-family:Axon-Bold;
+    src: url(".././fonts/Axon-Bold.ttf");
 }
 @font-face {
-    font-family:constan;
-    src: url(".././fonts/constan.ttf");
+    font-family:Axon-Light;
+    src: url(".././fonts/Axon-Light.ttf");
+}
+@font-face {
+    font-family:Axon-Regular;
+    src: url(".././fonts/Axon-Regular.ttf");
+}
+@font-face {
+    font-family:Axon-UltraLight;
+    src: url(".././fonts/Axon-UltraLight.ttf");
+}
+@font-face {
+    font-family:Axon-Bold;
+    src: url(".././fonts/Axon-Bold.eot");
+}
+@font-face {
+    font-family:Axon-Light;
+    src: url(".././fonts/Axon-Light.eot");
+}
+@font-face {
+    font-family:Axon-Regular;
+    src: url(".././fonts/Axon-Regular.eot");
+}
+@font-face {
+    font-family:Axon-UltraLight;
+    src: url(".././fonts/Axon-UltraLight.eot");
+}
+.style4 p{
+	color: rgba(255,255,255,0.9);
+	font-size: 22px;
+	margin-top: 11px;
+	font-weight: 900;
+	font-family:Axon-Light!important;
+}
+/* fonts assignments */
+*{
+	font-family:Axon-Bold!important;
 }
 
-/* fonts assignments */
-/*h1, h2, h3, h4, h5, p, li, a, label{
-	font-family:OLORT___;
-}*/
-
 /* general */
+body{
+	/*background: url('http://octopuswebmedia.ca/crypto/images/eds3.jpg');*/
+	background: url('http://octopuswebmedia.ca/crypto/images/earth-dollar-officiel5.jpg');
+	background-size:cover !important;
+	min-height:100%!important;
+}
 p{
 	font-size: 16px;
 	margin-bottom:0px;
@@ -36,6 +76,10 @@ button:focus{
     background:#3867a8!important;
     color:white!important;
 }
+/*
+.maxHeight{
+	height:900px;
+}*/
 .myBlock{
 	display:block;
 }
@@ -69,11 +113,20 @@ button:focus{
 .mTop4{
 	margin-top:4px;
 }
+.mTop10{
+	margin-top: 10px;
+}
 .mTop20{
 	margin-top:20px;
 }
 .mTop30{
 	margin-top:30px;
+}
+.mTop57{
+	margin-top:57px;
+}
+.mRight30{
+	margin-right:30px;
 }
 .mBotton40{
 	margin-bottom:40px;
@@ -84,24 +137,53 @@ button:focus{
 .mLeft12{
 	margin-left:12px;	
 }
+.mLeft15{
+	margin-left:15px!important;
+}
+.padLeft15{
+	padding-left:15px;
+}
 .noLeft{
 	margin-left:0px;
 	padding-left:0px;
 }
-.mRight30{
-	margin-right:30px;
+.noPadRight{
+	padding-right:0px;
 }
-.mTop57{
-	margin-top:57px;
-}
+
+
+
+
 
 /* header */
 .height150{
-	height:150px;
+    height: 37px;
+    background-color: rgba(0,0,0,0.85);
+    margin-bottom: 35px;
 }
 .nav-tabs > li a{
     padding: 10px 50px 0 50px;
     font-size:20px;
+    background-color: rgba(0,0,0,0.6);
+    color:white;
+}
+.nav-tabs > li a:hover{
+    /*background-color:rgba(48,116,103,0.4);*/
+   background-color:rgba(255,255,255,0.3);
+   color:rgba(0,0,0,0.7);
+   /*text-shadow:1px 1px 1px #307471 ;*/
+}
+.nav-tabs > li.active a, .nav-tabs > li.active a:active, .nav-tabs > li.active a:focus{
+	 background-color:rgba(0,0,0,1)!important;
+     color: #b5a83f!important;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.9)!important;
+    font-weight: 900;
+}
+	.nav-tabs > li.active a:hover{
+	  background-color:rgba(88,124,99,0.2)!important;
+	 /*color:#A1BDFE;*/
+	color:#FAEE87!important;
+	text-shadow:1px 1px 1px rgba(0,0,0,0.9)!important;
 }
 
 /* menu */
@@ -117,16 +199,24 @@ button:focus{
 
 }
 .totalEds{
-    color: #337ab7;
-    text-transform:uppercase;
     margin-top: 15px;
-    font-weight:900;
-}
-.bigger{
-	font-size:20px;
+    font-weight:100;
+    line-height:7px;
+    text-align:right;
 }
 .totalEds p{
-	font-size:16px;
+    color: white;
+    font-family: Axon-Light!important;
+    font-weight: 900!important;
+    letter-spacing: 2px;
+    font-size: 13px!important;
+}
+.borderEarth{
+	border: 3px solid #b5a83f;
+}
+.bigger{
+	font-size:17px;
+	margin-left:2px;
 }
 .goLeft{
 	left:-17px;
@@ -143,10 +233,96 @@ a.gooey-menu-item{
 }
 
 /* wallet */
+.style1{
+	background-color: rgba(255,255,255,0.1);
+	margin-left: 14px;
+}
+.style1 h3{
+
+}
+.style3{
+	background-color: rgba(0,0,0,0.8);
+}
+textarea{
+	background-color: rgba(0,0,0,0.3);
+	border-right:1px solid (255,255,255,0.6);
+	border-bottom:1px solid (255,255,255,0.6);
+}
+.style4{
+	color: rgba(255,255,255,0.9);
+	
+	margin-top: 11px;
+	font-weight: 900;
+	font-family:Axon-Light!important;
+}
+.style4 p{
+    font-size: 14px;
+    font-family: Axon-Light!important;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+.topIntro{
+	margin-top:29px;
+}
+span.style4{
+	font-size:14px!important;
+}
+.style6{
+	font-size:14px!important;
+	color: rgba(255,255,255,0.9)!important;
+	margin-top: 11px;
+	font-weight: 900;
+	font-family:Axon-Light!important;
+}
+.style7{
+	background-color: rgba(0,0,0,1)!important;
+	color:white;
+}
+.well.style6{
+	background-color:rgba(255,255,255,0.3);
+}
+.styleLabel label{
+	color: rgba(255,255,255,0.9);
+	font-size: 22px;
+	margin-top: 11px;
+	font-weight: 900;
+	font-family:Axon-Light!important;
+}
+.styleLabel2 .col-lg-4 {
+
+}
+.styleLabel2 label{
+	
+}
+.btn-primary, .btn-primary:focus, .btn-primary:active {
+    background-color: rgba(0,0,0,0.8)!important;
+    border: 1px solid rgba(250,238,135,0.9)!important;
+    font-size: 21px;
+    height: 90px;
+    top: 2px;
+    width: 196px;
+    line-height: 73px;
+    color: #c7bd44!important;
+    text-shadow: 1px 1px 1px rgba(255,255,255,0.3)!important;
+    font-weight: 100 !important;
+    border-radius:0px!important;
+}
+	.btn-primary:hover {
+		background-color:rgba(0,0,0,0.3)!important;
+		color:black!important;
+		border-color:rgba(255,255,255,0.9)!important;		
+}
 .fileUpload{
     position: relative;
     overflow: hidden;
     margin: 10px;
+}
+.fileUpload span{
+	font-family: Axon-Light!important;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 4px;
 }
 .fileUpload input.upload {
     position: absolute;
@@ -159,9 +335,8 @@ a.gooey-menu-item{
     opacity: 0;
     filter: alpha(opacity=0);
 }
-.bLeft{
-	border-left:1px solid rgba(0,0,0, 0.3);
-	height:200px;
+.smallerCol[class*=col-]{
+	width:4%;
 }
 .h200{
 	height:200px;
@@ -194,6 +369,9 @@ a.gooey-menu-item{
 	font-size:1.15em;
 	font-weight:600;
 }
+.ajustWell .well{
+
+}
 .well{
 	margin-bottom:10px;
 	margin-top:20px;
@@ -225,8 +403,43 @@ a.gooey-menu-item{
 	margin-top:15px;
 	min-height:40px;
 }
+.customWidth[class*=col-]{
+	width: 31.111111%;
+	margin-left: 1.111%;
+}
+.mRight14{
+	margin-right: 14px;
+}
+.styleInput input{
+	background-color: rgba(0,0,0,0.2)!important;
+	border: none;
+	border-bottom: 1px solid rgba(255,255,255,0.4);	
+	border-radius:0px;
+	color:white!important;
+}
+.styleInput input:hover{
+	background-color:transparent;
+	
+}
 
+.styleInput input[placeholder], .styleInput [placeholder], .styleInput *[placeholder], .styleInput input,
+.styleInput textarea[placeholder], .styleInput [placeholder], .styleInput *[placeholder], .styleInput textarea {
+   color:white!important;
+}
+.styleInput input ::-webkit-input-placeholder, .styleInput input :-moz-placeholder,
+.styleInput input ::-moz-placeholder, .styleInput input :-ms-input-placeholder,
+.styleInput textarea ::-webkit-input-placeholder, .styleInput textarea :-moz-placeholder,
+.styleInput textarea ::-moz-placeholder, .styleInput textarea :-ms-input-placeholder{
+   color:white!important;
+}
+
+.styleInput input:focus{
+	border-bottom:1px solid white!important;
+}
 /* contracts */
+#comment1 h3{
+	color:white;
+}
 .contract1 img, .contract2 img, .contract3 img{
 	width:60px;
 	height:auto;
@@ -274,7 +487,7 @@ a.gooey-menu-item{
 	margin-top:20px;
 }
 .wallet{
-	margin-left:15px;s
+	margin-left:15px;
 }
 
 /* contracts modals */
@@ -307,16 +520,6 @@ a.gooey-menu-item{
 	text-align:center;
 	margin-top:30px;
 }
-
-
-
-
-
-
-
-
-
-
 
 
 
