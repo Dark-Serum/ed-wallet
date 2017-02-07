@@ -14,7 +14,7 @@
 
 </head>
 
-<body>
+<body onload="Init()">
 	<div class="container">
 		<div class="row height150"></div>
 		
@@ -28,7 +28,6 @@
 			</div>
 			<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 totalEds">
 				<p>Balance <span class="currency">Earth Dollar: </span><span class="bigger">0</span><p>
-				<span id="inptBllnc">220</span>
 			</div>
   		</div>
 
@@ -53,8 +52,8 @@
 	      				
 	      			</div>
 	      			<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 h200 bLeft">
-	      				<p class="rColComment mTop4">You do not have an account yet</p>
-	      				<article class="separator"></article>
+	      				<table id="coinbase"></table>
+	      				<table id="history"></table>
 	      				<p class="rColComment mTop4">No transaction recorded</p>
 	      			</div>
 	      		</div>
@@ -404,7 +403,32 @@
 <script src="./js/gooey.min.js"></script>
 <script src="./js/ripple.js"></script>
 
+<script type="text/javascript" src="./js/bignumber.min.js"></script>
+<script type="text/javascript" src="./js/web3-light.js"></script>
+<script>
+   
+    var Web3 = require('web3');
+    var web3 = new Web3();
+    web3.setProvider(new web3.providers.HttpProvider());
+	//console.log(web3);
+	var ED = web3.ed;
+    
+	
+    function watchBalance() {
+        //var coinbase = web3.ed.coinbase;
 
+        //var originalBalance = web3.ed.getBalance(coinbase).toNumber();
+        //document.getElementById('coinbase').innerText = 'coinbase: ';// + coinbase;
+        /*document.getElementById('original').innerText = ' original balance: ' + originalBalance + '    watching...';
+
+        web3.eth.filter('latest').watch(function() {
+            var currentBalance = web3.eth.getBalance(coinbase).toNumber();
+            document.getElementById("current").innerText = 'current: ' + currentBalance;
+            document.getElementById("diff").innerText = 'diff:    ' + (currentBalance - originalBalance);
+        });*/
+    }
+
+</script>
 
 <script>
 
@@ -478,10 +502,19 @@
 	    document.getElementById("outputSent2").innerHTML = sent;
 	}
 	
-	window.onload = currentBallance;
-	function currentBallance(){
-		var myBallance = document.getElementById("inptBllnc").value;
-		document.getElementById("outputBllnc").innerHTML = myBallance;
+	window.onload = Init;
+	function Init(){	    
+	    var tb_accounts = "<tr><th>Coinbase: "+ ED.coinbase +"</th></tr>";
+		tb_accounts += "<tr><th>Wallet</th><th>Balance</th></tr>";
+		
+		for(i=0; i<ED.accounts.length; i++) {
+		    
+		    tb_accounts += ("<tr><td>"+ ED.accounts[i] +"</td>" + 
+			"<td>"+ web3.fromSeed(ED.getBalance(ED.accounts[i]).toNumber()) +"</td></tr>");
+		}		
+		$('#coinbase').append(tb_accounts);	
+		//var myBalance = document.getElementById("inptBllnc").value;		
+		//document.getElementById("outputBllnc").innerHTML = myBalance;		
 	}
 	
 	
