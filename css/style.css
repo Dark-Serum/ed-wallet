@@ -143,12 +143,12 @@ a.gooey-menu-item{
 }
 
 /* wallet */
-.fileUpload{
+.createWallet{
     position: relative;
     overflow: hidden;
     margin: 10px;
 }
-.fileUpload input.upload {
+.createWallet input.upload {
     position: absolute;
     top: 0;
     right: 0;

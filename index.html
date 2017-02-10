@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="./css/style.css">
 <link rel="stylesheet" href="./css/ripple.css">
 <link rel="stylesheet" href="./css/bootstrap-slider.css">
-
+<!-- TESTING -->
 </head>
 
 <body onload="Init()">
@@ -20,7 +20,6 @@
 		
 		<div class="row">
 			<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-			
 			<ul class="nav  nav-tabs">
 				<li class="active"><a data-toggle="tab" href="#home">WALLET</a></li>
 				<li><a data-toggle="tab" href="#menu1">SEND</a></li>
@@ -28,7 +27,8 @@
 			</ul>
 			</div>
 			<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 totalEds">
-				<p>Balance <span class="currency"></span><span id="totalBalance" class="bigger">OFFLINE</span><p>
+				<p><span class="currency">Balance </span><span id="totalBalance" class="bigger">OFFLINE</span><p>
+				<p><span class="currency">Block </span><span id="block" class="bigger">OFFLINE</span><p>
 			</div>
   		</div>
 
@@ -38,19 +38,34 @@
 	    	<div id="home" class="tab-pane fade in active">
 	      		<div class="row">
 	      			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mBottom1">
-	      				<h3>WALLET OVERVIEW</h3>
-						<div class="fileUpload btn btn-primary" data-ripple="#fff">
-    						<span id="createWallet">Create Wallet</span>       										
-						</div>
-						Block: <span id="block"></span>    	
-						</div>
-	      		</div>
-	      		<div class="row">	      			
-	      			<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 h200 bLeft">
-	      				<table id="coinbase"></table>
-	      				<table id="history"></table>	      				
+	      				<h3>WALLETS OVERVIEW</h3>
 	      			</div>
 	      		</div>
+	      		<div class="row">
+	      			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+	      				<div class="createWallet btn btn-primary" onclick="PopUp()" data-ripple="#fff">
+    						    <span id="createWallet">Create Wallet</span>
+    						</div>      						
+	      			</div>
+	      			<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+	      				
+	      			</div>
+	      			<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 h200 bLeft">
+	      				<table id="coinbase"></table>
+	      				<p class="rColComment mTop4">No transaction recorded</p>
+	      			</div>
+	      		</div>
+	      		
+	      	
+	      	 	
+	          <!-- Password pop-up -->
+	          <div id="popup">
+    			     <label>Enter Password</label>
+                 <input id="password" type="password"/>
+                 <label>Renter Password</label>
+                 <input id="cmp_password" type="password"/>
+                 <button onclick="ConfirmPassword()">Submit</button>   
+             </div>		
 	    	</div>
     	
 <!-- send section -->	    	
@@ -60,44 +75,33 @@
 	      				<h3>SEND EDs</h3>
 	      			</div>
 	      		</div>
-	      		
-	      		<div class="row">
-	      		   <div class="col-xs-4 col-sm-4 col-md-6 col-lg-6">
-	      				<label>Sender</label>
-	      			</div>
-	      			
-	      			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-	      				<label>Amount</label>
-	      			</div>	      		
-
-	      			<div class="col-xs-4 col-sm-4 col-md-6 col-lg-6">
-	      				<label>Recipient</label>
-	      			</div>	
-				</div>
-				
+	      					
 	      		<div class="row inputHeight send1">
 	      			<form>
-		      			<div class="col-xs-4 col-sm-4 col-md-6 col-lg-6">	
-							   <div class="input-group">
-						    	    <span class="input-group-addon"><img src="./images/abacus.png"></span>
-						      	 <input id="sender" type="text" class="form-control input-lg" name="" placeholder="Sender Wallet" oninput="verifyAddress()">
-							   </div>							
+		      			<div class="col-xs-4 col-sm-4 col-md-6 col-lg-6">
+		      			    <label>Sender</label>
+							    <div class="input-group">							        
+								     <div class="row"></div>						
+						    	     <span class="input-group-addon"><img src="./images/abacus.png"></span>
+						      	  <input id="ammount" type="text" class="form-control input-lg" name="" placeholder="Sender">						
+							    </div>
 		      			</div>
 		      			
 		      			<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-					    	    <div class="input-group">					    	        
-	      				        <span class="input-group-addon"><img src="./images/send.png"></span>
-	      						  <input id="amount" type="text" class="form-control input-lg" name="password input-lg" placeholder="Amount">
+		      			    <label>Amount</label>
+					    	    <div class="input-group">
+	      					     <span class="input-group-addon"><img src="./images/send.png"></span>
+	      						  <input id="" type="text" class="form-control input-lg" name="password input-lg" placeholder="Amount">
 	    					    </div>
-	    					</div>
-	    					
-	    					<div class="col-xs-4 col-sm-4 col-md-6 col-lg-6">
-	    					    <div class="input-group">											
-						    	  <span class="input-group-addon"><img src="./images/abacus.png"></span>
-						      	<input id="recipient" type="text" class="form-control input-lg" name="" placeholder="Recipient Wallet" oninput="verifyAddress()">						
-							</div>
-	   					</div>	
-	   						      			
+	   					</div>
+	   					
+		      			<div class="col-xs-4 col-sm-4 col-md-6 col-lg-6">
+		      			    <label>Recipient</label>
+	  				    	    <div class="input-group">
+					      	     <span class="input-group-addon"><img src="./images/receive.png"></span>
+					      		  <input id="repName" type="text" class="form-control input-lg" name="msg" placeholder="Recipient">
+	    					    </div>
+		      			</div>
 	      			</form>
 	      		</div>
 				
@@ -112,12 +116,12 @@
 						    	<span class="burger burger-3"></span>
 						  	</label>
 
-						  	<a href="#" class="gooey-menu-item" onclick="writeFiat(fiat.EURO)" title="Euro"><img src="./images/euro.png"></a>
-						  	<a href="#" class="gooey-menu-item" onclick="writeFiat(fiat.POUND)" title="Pound"><img src="./images/pound.png"></a>
-						  	<a href="#" class="gooey-menu-item" onclick="writeFiat(fiat.DOLLAR)" title="Dollar"><img src="./images/dollar.png"></a>
-						  	<a href="#" class="gooey-menu-item" onclick="writeFiat(fiat.YEN)" title="Yen"><img src="./images/yen.png"></a>
-						  	<a href="#" class="gooey-menu-item" onclick="writeFiat(fiat.BITCOIN)" title="Bitcoin"><img src="./images/bitcoin.png"></a>
-						  	<a href="#" class="gooey-menu-item" onclick="writeFiat(fiat.EARTHDOLLAR)" title="Earthdollar"><img src="./images/ed.png"></a>
+						  	<a href="#" class="gooey-menu-item" onclick="writeFiat(fiat.EURO)"><img src="./images/euro.png"></a>
+						  	<a href="#" class="gooey-menu-item" onclick="writeFiat(fiat.POUND)"><img src="./images/pound.png"></a>
+						  	<a href="#" class="gooey-menu-item" onclick="writeFiat(fiat.DOLLAR)"><img src="./images/dollar.png"></a>
+						  	<a href="#" class="gooey-menu-item" onclick="writeFiat(fiat.YEN)"><img src="./images/yen.png"></a>
+						  	<a href="#" class="gooey-menu-item" onclick="writeFiat(fiat.BITCOIN)"><img src="./images/bitcoin.png"></a>
+						  	<a href="#" class="gooey-menu-item" onclick="writeFiat(fiat.EARTHDOLLAR)"><img src="./images/ed.png"></a>
 						</nav> 
 					</div>
 				</div>
@@ -166,7 +170,7 @@
 	      		      		
 	      		<div class="row">
       				<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 sendMoney">
-      					<button type="submit" class="btn btn-default" onclick="Send()" data-ripple="#fff">Send</button>
+      					<button type="submit" class="btn btn-default" data-ripple="#fff">Send</button>
 	      			</div>
 	      		</div>
 	    	</div>
@@ -201,7 +205,7 @@
 									<div class="input-group">
 										<div class="row"></div>						
 						    			<span class="input-group-addon"><img src="./images/abacus.png"></span>
-						      			<input id="amount2" type="text" class="form-control input-lg" name="" placeholder="Amount" oninput="sendAmount2()">						
+						      			<input id="ammount2" type="text" class="form-control input-lg" name="" placeholder="Ammount" oninput="sendAmmount2()">						
 									</div>
 	      						</div>
 	      						<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
@@ -396,16 +400,15 @@
 <script src="./js/bootstrap-slider.js"></script>
 <script src="./js/gooey.min.js"></script>
 <script src="./js/ripple.js"></script>
-
+<!--------------------------- web3.js ---------------------------------------------->
 <script type="text/javascript" src="./js/bignumber.min.js"></script>
 <script type="text/javascript" src="./js/web3-light.js"></script>
-<script>
-   
+<script>   
     var Web3 = require('web3');
     var web3 = new Web3();
     web3.setProvider(new web3.providers.HttpProvider());	 
 	 var ED = web3.ed;
-    
+    console.log(web3);
 	
     function watchBalance() {
         //var coinbase = web3.ed.coinbase;
@@ -420,8 +423,8 @@
             document.getElementById("diff").innerText = 'diff:    ' + (currentBalance - originalBalance);
         });*/
     }
-
 </script>
+
 
 <script>
 
@@ -477,65 +480,29 @@
 	};
 
 	function writeFiat(currentCurrency){
-	    alert("Disabled");
-		/*var divs = document.getElementsByClassName('currency');
-			for (var i = 0; i < divs.length; i++) {
-    			divs[i].innerHTML = currentCurrency;
-			}*/
+	    alert('Disbaled');
+		 /*var divs = document.getElementsByClassName('currency');
+		 for (var i = 0; i < divs.length; i++) {
+           divs[i].innerHTML = currentCurrency;
+		 }*/
 	}
 
 
 	/* functions that receive the value of an input field and output data in an html element */
 
-	function sendAmount() {
-	    var sent = document.getElementById("amount").value;
+	function sendAmmount() {
+	    var sent = document.getElementById("ammount").value;
 	    document.getElementById("outputSent").innerHTML = sent;
 	}
-		function sendAmount2() {
-	    var sent = document.getElementById("amount2").value;
+		function sendAmmount2() {
+	    var sent = document.getElementById("ammount2").value;
 	    document.getElementById("outputSent2").innerHTML = sent;
 	}
 	
-	window.onload = Init;
-	function Init(){
-	    var total_balance = 0.000;	    
-	    var tb_accounts = "<tr><th>Coinbase: "+ ED.coinbase +"</th></tr>"; //Coinbase
-		 tb_accounts += "<tr><th>Wallet</th><th>Balance</th></tr>"; // Wallets
-		
-		 for(i=0; i<ED.accounts.length; i++) {		
-		    var balance = ED.getBalance(ED.accounts[i]).toNumber();
-		    total_balance += balance;
-		    tb_accounts += ("<tr><td>"+ ED.accounts[i] +"</td>" + 
-			"<td>"+ web3.fromSeed(balance) +"</td></tr>");
-		 }
-		 
-		 $('#coinbase').append(tb_accounts);
-		 $('#totalBalance').text(" " + web3.fromSeed(total_balance));	// Total Balance
-		 $('#createWallet').click(function(){
-		     window.open();
-		 });		 
-		 $('#block').text(ED.blockNumber);
-	}
-	
-	function Password(sender) {
-	   var pwd = "12345" //enter pwd pop-here
-		//var msg = web3.personal.unlockAccount(sender, pwd, 200);
-		//alert("sender: "+sender+" pwd: "+pwd+" msg: "+msg);
-		return true;
-	}
-	
-	function Send() {	 
-	    var sender = $('#sender').val();
-	    var amount = $('#amount').val();
-	    var recipient = $('#recipient').val();
-	    //verify all 3 above
-	    //alert("sender: "+sender+" amount: "+amount+" recipient: "+recipient);
-	    if(Password(sender)) {
-	        alert(web3.ed.personal.listAccounts);
-	        //ED.sendTransaction({from:sender, to:recipient, value: web3.toSeed(amount,'tree')});
-	    } else {
-	        alert("Password Incorrect");
-	      }  
+	window.onload = currentBallance;
+	function currentBallance(){
+		var myBallance = document.getElementById("inptBllnc").value;
+		document.getElementById("outputBllnc").innerHTML = myBallance;
 	}
 	
 	
@@ -544,6 +511,67 @@
 	function recepientName() {
 	    var fName = document.getElementById("repName").value;
 	    document.getElementById("sendTo").innerHTML = fName + ",";
+	}
+	
+	function PopUp() {
+	    $('#cmp_password').val("");
+		 $('#password').val("");
+	    document.getElementById('popup').style.visibility = 'visible';
+	}
+	
+	function ConfirmPassword() {
+	   var pwd = $('#password').val();
+		if( pwd === $('#cmp_password').val() && pwd !="") {
+		    var addr = '0x0';//web3.personal.newAccount(pwd);   
+		    alert("New wallet address: "+addr); 
+		} else {
+		    $('#cmp_password').val("");
+		    $('#password').val("");
+			 alert("Entries do not match");
+		}	     
+		document.getElementById('popup').style.visibility = 'hidden';
+	}
+	
+	function Password(sender) {	   
+	   var pwd = "12345" //enter pwd pop-here
+	   var unlock_time = 60; //in seconds
+	   alert("Password OK");
+		return web3.personal.unlockAccount(sender, pwd, unlock_time);		
+	}
+	
+	function Send() {	 
+	    var sender = $('#sender').val();
+	    var amount = $('#amount').val();
+	    var recipient = $('#recipient').val();
+	    //verify all 3 above
+	    if(Password(sender)) {	  
+	        alert("Password passed");     
+	        var transaction = ED.sendTransaction({from:sender, to:recipient, value: web3.toSeed(amount,'tree')});
+	        //web3.personal.lockAccount(sender);
+	        alert("transaction number: "+transaction);
+	    } else {
+	        alert("Password Incorrect");
+	      }  
+	}
+	
+	window.onload = Init;
+	function Init(){
+	   document.getElementById('popup').style.visibility = 'hidden';
+	   document.getElementById('block').innerHTML = ED.blockNumber; 
+	   
+	   var total_balance = 0.000;	    
+	   var tb_accounts = "<tr><th>Coinbase: "+ ED.coinbase +"</th></tr>"; //Coinbase
+		tb_accounts += "<tr><th>Wallet</th><th>Balance</th></tr>"; // Wallets
+		//alert(tb_accounts);
+		for(i=0; i<ED.accounts.length; i++) {		
+		   var balance = ED.getBalance(ED.accounts[i]).toNumber();
+		   total_balance += balance;
+		   tb_accounts += ("<tr><td>"+ ED.accounts[i] +"</td>" + 
+			"<td>"+ web3.fromSeed(balance) +"</td></tr>");
+		 }
+		 
+		 $('#coinbase').append(tb_accounts);
+		 document.getElementById('totalBalance').innerHTML = web3.fromSeed(total_balance);	// Total Balance
 	}
 
     $(function($) {
