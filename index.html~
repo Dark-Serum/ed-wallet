@@ -545,7 +545,7 @@
 	    var sender = $('#sender').val();
 	    var amount = $('#amount').val();
 	    var recipient = $('#recipient').val();
-	    var send_data = $('#sendData').val();	    
+	    var send_data = $('#send_data').val();	    
 	    
 	    //verify all 3 above
 	    if(Password(sender)) {	  	        
