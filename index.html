@@ -39,20 +39,15 @@
 	      		<div class="row">
 	      			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mBottom1">
 	      				<h3>WALLETS OVERVIEW</h3>
-	      			</div>
+	      				<div class="createWallet btn btn-primary" onclick="PopUpNewWallet()" data-ripple="#fff">
+    				         <span id="createWallet">Create Wallet</span>
+    					   </div>
+	      			</div>	      			
 	      		</div>
 	      		<div class="row">
-	      			<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-	      				<div class="createWallet btn btn-primary" onclick="PopUp()" data-ripple="#fff">
-    						    <span id="createWallet">Create Wallet</span>
-    						</div>      						
-	      			</div>
-	      			<div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
-	      				
-	      			</div>
-	      			<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 h200 bLeft">
-	      				<table id="coinbase"></table>
-	      				<p class="rColComment mTop4">No transaction recorded</p>
+	      			
+	      			<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+	      				<table id="coinbase"></table>	      				
 	      			</div>
 	      		</div>
 	      		
@@ -61,10 +56,10 @@
 	          <!-- Password pop-up -->
 	          <div id="popup">
     			     <label>Enter Password</label>
-                 <input id="password" type="password"/>
+                 <input id="password_1" type="password"/>
                  <label>Renter Password</label>
-                 <input id="cmp_password" type="password"/>
-                 <button onclick="ConfirmPassword()">Submit</button>   
+                 <input id="password_2" type="password"/>
+                 <button onclick="ConfirmPassword()">Enter</button>   
              </div>		
 	    	</div>
     	
@@ -80,10 +75,9 @@
 	      			<form>
 		      			<div class="col-xs-4 col-sm-4 col-md-6 col-lg-6">
 		      			    <label>Sender</label>
-							    <div class="input-group">							        
-								     <div class="row"></div>						
-						    	     <span class="input-group-addon"><img src="./images/abacus.png"></span>
-						      	  <input id="ammount" type="text" class="form-control input-lg" name="" placeholder="Sender">						
+							    <div class="input-group"> 			     
+						    	     <span class="input-group-addon"><img id="icon" src="./images/abacus.png"></span> 
+						      	  <input id="sender" type="text" class="form-control input-lg" placeholder="Sender">
 							    </div>
 		      			</div>
 		      			
@@ -91,7 +85,7 @@
 		      			    <label>Amount</label>
 					    	    <div class="input-group">
 	      					     <span class="input-group-addon"><img src="./images/send.png"></span>
-	      						  <input id="" type="text" class="form-control input-lg" name="password input-lg" placeholder="Amount">
+	      						  <input id="amount" type="text" class="form-control input-lg" placeholder="Amount">
 	    					    </div>
 	   					</div>
 	   					
@@ -99,7 +93,7 @@
 		      			    <label>Recipient</label>
 	  				    	    <div class="input-group">
 					      	     <span class="input-group-addon"><img src="./images/receive.png"></span>
-					      		  <input id="repName" type="text" class="form-control input-lg" name="msg" placeholder="Recipient">
+					      		  <input id="recipient" type="text" class="form-control input-lg" placeholder="Recipient">
 	    					    </div>
 		      			</div>
 	      			</form>
@@ -153,14 +147,14 @@
 				<div class="row mTop30">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						<p>TOTAL :</p>
-						<span id="outputBllnc" class="divCurrency"> </span><span> </span><span class="currency"> Earth Dollard</span>
+						<span id="outputBllnc" class="divCurrency"> </span><span> </span><span class="currency"> Earthdollar</span>
 					</div>
 				</div>
 
 	      		<div class="row">
 	      			<div class="col-xs-7 col-sm-7 col-md-17 col-lg-7 ajustWell">
 	      				<div class="well">
-	      					<p>You want to send <b><span id="outputSent">0 </span><span class="currency"> USD</span></b> 
+	      					<p>You want to send <b><span id="outputSent">0 </span><span class="currency"> Earthdollar</span></b> 
 	      						in Earth Dollar to <span id="sendTo">(Receiver's name)</span> using exchange rates from	      						
 	      						<a href="http://cryptocompare.com" target="_blank">cryptocompare.com</a></p>
 	      						<p>Which is currently an equivalent of <span>0<b> Earth Dollar</b></span></p>
@@ -169,10 +163,19 @@
 	      		</div>
 	      		      		
 	      		<div class="row">
-      				<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 sendMoney">
+      				<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 sendMoney" onclick="PopUpSend()">
       					<button type="submit" class="btn btn-default" data-ripple="#fff">Send</button>
 	      			</div>
 	      		</div>
+	          
+	          <!-- Send Password PopUp -->
+	          <div id="senderPopUp">
+    			     <label>Enter Password</label>
+                 <input id="senderPassword" type="password"/>
+                 <label>Seconds to Unlock Account</label>
+                 <input id="unlockTime" type="number">          
+                 <button onclick="Send()">Confirm</button>   
+             </div>				
 	    	</div>
 	    	
 <!-- contract section-->    	
@@ -198,14 +201,14 @@
 	      						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
 						    		<div class="input-group">
 	      								<span class="input-group-addon"><img src="./images/send.png"></span>
-	      								<input id="" type="text" class="form-control input-lg" name="password input-lg" placeholder="Sender">
+	      								<input id="sender" type="text" class="form-control input-lg" placeholder="Sender Wallet">
 	    							</div>
 	      						</div>
 	      						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
 									<div class="input-group">
 										<div class="row"></div>						
 						    			<span class="input-group-addon"><img src="./images/abacus.png"></span>
-						      			<input id="ammount2" type="text" class="form-control input-lg" name="" placeholder="Ammount" oninput="sendAmmount2()">						
+						      			<input id="contract_amount" type="text" class="form-control input-lg" placeholder="Amount">						
 									</div>
 	      						</div>
 	      						<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
@@ -215,7 +218,7 @@
 	      					
 	      					<div class="row wellOutput">
 	      						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 well well-sm">
-	      							<p>You want to send <b><span id="outputSent2">0 </span><span class="currency"> USD</span></b> in Earth Dollar</p>
+	      							<p>You want to send <b><span id="outputSent2">0 </span><span class="currency"> Earthdollar</span></b> in Earth Dollar</p>
 	      						</div>
 	      					</div>
 	      					
@@ -409,20 +412,6 @@
     web3.setProvider(new web3.providers.HttpProvider());	 
 	 var ED = web3.ed;
     console.log(web3);
-	
-    function watchBalance() {
-        //var coinbase = web3.ed.coinbase;
-
-        //var originalBalance = web3.ed.getBalance(coinbase).toNumber();
-        //document.getElementById('coinbase').innerText = 'coinbase: ';// + coinbase;
-        /*document.getElementById('original').innerText = ' original balance: ' + originalBalance + '    watching...';
-
-        web3.eth.filter('latest').watch(function() {
-            var currentBalance = web3.eth.getBalance(coinbase).toNumber();
-            document.getElementById("current").innerText = 'current: ' + currentBalance;
-            document.getElementById("diff").innerText = 'diff:    ' + (currentBalance - originalBalance);
-        });*/
-    }
 </script>
 
 
@@ -513,30 +502,39 @@
 	    document.getElementById("sendTo").innerHTML = fName + ",";
 	}
 	
-	function PopUp() {
-	    $('#cmp_password').val("");
-		 $('#password').val("");
+	function PopUpNewWallet() {
+	    $('#password_1').val("");
+		 $('#password_2').val("");
 	    document.getElementById('popup').style.visibility = 'visible';
 	}
 	
+	function PopUpSend() {
+	    $('#senderPassword').val("");
+		 $('#unlockTime').val("");
+	    document.getElementById('senderPopUp').style.visibility = 'visible';
+	}
+	
 	function ConfirmPassword() {
-	   var pwd = $('#password').val();
-		if( pwd === $('#cmp_password').val() && pwd !="") {
-		    var addr = '0x0';//web3.personal.newAccount(pwd);   
+	   var pwd = $('#password_1').val();
+		if( pwd === $('#password_2').val() && pwd !="") {
+		    var addr = web3.personal.newAccount(pwd);   
 		    alert("New wallet address: "+addr); 
 		} else {
-		    $('#cmp_password').val("");
-		    $('#password').val("");
+		    $('#password_1').val("");
+		    $('#password_2').val("");
 			 alert("Entries do not match");
 		}	     
 		document.getElementById('popup').style.visibility = 'hidden';
 	}
 	
+		
 	function Password(sender) {	   
-	   var pwd = "12345" //enter pwd pop-here
+	   var pwd = $('#senderPassword').val();	   
 	   var unlock_time = 60; //in seconds
-	   alert("Password OK");
-		return web3.personal.unlockAccount(sender, pwd, unlock_time);		
+	   //alert("Password OK");
+		var msg = web3.personal.unlockAccount(sender, pwd, unlock_time);
+		$('#senderPassword').val("");
+		return msg; 		
 	}
 	
 	function Send() {	 
@@ -544,23 +542,26 @@
 	    var amount = $('#amount').val();
 	    var recipient = $('#recipient').val();
 	    //verify all 3 above
+	    //alert(sender+""+amount+""+recipient); 
 	    if(Password(sender)) {	  
 	        alert("Password passed");     
-	        var transaction = ED.sendTransaction({from:sender, to:recipient, value: web3.toSeed(amount,'tree')});
+	        //var transaction = ED.sendTransaction({from:sender, to:recipient, value: web3.toSeed(amount,'tree')});
 	        //web3.personal.lockAccount(sender);
 	        alert("transaction number: "+transaction);
 	    } else {
 	        alert("Password Incorrect");
-	      }  
+	      } 
+	    document.getElementById('popup').style.visibility = 'hidden';   
 	}
 	
 	window.onload = Init;
 	function Init(){
 	   document.getElementById('popup').style.visibility = 'hidden';
+      document.getElementById('senderPopUp').style.visibility = 'hidden';
 	   document.getElementById('block').innerHTML = ED.blockNumber; 
 	   
 	   var total_balance = 0.000;	    
-	   var tb_accounts = "<tr><th>Coinbase: "+ ED.coinbase +"</th></tr>"; //Coinbase
+	   var tb_accounts = "<caption>Coinbase: "+ ED.coinbase +"</caption>"; //Coinbase
 		tb_accounts += "<tr><th>Wallet</th><th>Balance</th></tr>"; // Wallets
 		//alert(tb_accounts);
 		for(i=0; i<ED.accounts.length; i++) {		
