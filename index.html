@@ -202,32 +202,32 @@
 	      						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
 						    		<div class="input-group">
 	      								<span class="input-group-addon"><img src="./images/send.png"></span>
-	      								<input id="sender" type="text" class="form-control input-lg" placeholder="Sender Wallet">
+	      								<input id="contract_sender" type="text" class="form-control input-lg" placeholder="Sender Wallet">
 	    							</div>
 	      						</div>
 	      						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
 									<div class="input-group">
 										<div class="row"></div>						
 						    			<span class="input-group-addon"><img src="./images/abacus.png"></span>
-						      			<input id="contract_amount" type="text" class="form-control input-lg" placeholder="Amount">						
+						      			<input id="contract_amount" type="number" class="form-control input-lg" placeholder="Amount">						
 									</div>
 	      						</div>
-	      						<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+	      						<!--<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
 	      							<p>0.00 <span class="currency">Earth Dollar: </span> <span>(0.00 <span>ETHER</span>)</span></p>
-	      						</div>
+	      						</div>-->
 	      					</div>
 	      					
-	      					<div class="row wellOutput">
+	      					<!--<div class="row wellOutput">
 	      						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 well well-sm">
 	      							<p>You want to send <b><span id="outputSent2">0 </span><span class="currency"> Earthdollar</span></b> in Earth Dollar</p>
 	      						</div>
-	      					</div>
-	      					
+	      					</div>-->
+	      					<br/>
 	      					<div class="row">
 	      						<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
 							  		<ul class="nav nav-pills">
-									    <li class="active"><a data-toggle="pill" href="#byteCode">SOLIDITY CONTRACT SOURCE CODE</a></li>
-									    <li><a data-toggle="pill" href="#sourceCode">CONTRACT BY CODE</a></li>						
+									    <li class="active" onclick="Compile(0)"><a data-toggle="pill" >CONTRACT BY BYTE CODE</a></li>
+									    <li><a data-toggle="pill" onclick="Compile(1)>SOLIDITY CONTRACT SOURCE CODE</a></li>						
 									</ul>
 									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 noLeft">
 										<div class="tab-content">
@@ -235,12 +235,7 @@
 										    	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 textWidth">
 										      		<textarea name="textfield6" id="textfield4" class="text"></textarea>
 										    	</div>
-										    </div>
-										    <div id="sourceCode" class="tab-pane fade">
-										    	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 textWidth">
-										      		<textarea name="textfield6" id="textfield4" class="text"></textarea>
-										    	</div>
-										    </div>
+										    </div>										    
 										</div>
 									</div>
 									
@@ -257,7 +252,7 @@
 	      						</div>
 	      					</div>
 									
-							<div class="row mTop30">
+							<!--<div class="row mTop30">
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 									<p>Select fee:</p>
 								</div>
@@ -274,16 +269,15 @@
 		      					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		      						<p>TOTAL:</p>
 		      						<span>0.00 <span class="currency">Earth Dollar </span></span>
-		      					</div>
-		      					
-		      				</div>						      					
+		      					</div>		      					
+		      				</div>-->						      					
 		      						      						      						      						      		
 		      				<div class="row mTop20">	
 		      					<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">	      			
 		      						<a href="#" onclick="toWallet()">Back to wallet</a>
 		      					</div>
 		      					<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 sendMoney">
-		      						<button type="submit" class="btn btn-default mRight30" data-ripple="#fff">Deploy</button>
+		      						<button type="submit" class="btn btn-default mRight30" onclick="Deploy()" data-ripple="#fff">Deploy</button>
 		      					</div>
 		      				</div>
 		      			</div>
@@ -292,7 +286,7 @@
 	      		
 	      		
 	      		<div class="row contract2 mBotton40 mLeft0">		      			
-      				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 contractButton" data-toggle="modal" data-target="#myModal">
+      				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 contractButton" data-toggle="modal" data-target="#myModal" onclick="ClearContract()">
 		      			<span><img src="./images/contracts-watch.png"/ >&nbsp;&nbsp;
 		      			WATCH CONTRACT</span>
 		      		</div>
@@ -316,17 +310,17 @@
 	        						<div class="left15">
 		        						<form action="">
 								        	<label>Contract Name</label>
-						        			<input class="width100" type="text" placeholder="name this contract">
+						        			<input class="width100" id="contractName" type="text" placeholder="name this contract">
 					        				<label>Contract Adress</label>
-					        				<input class="width100" type="text" placeholder="0x00000...">
+					        				<input class="width100" id="contractAddress" type="text" placeholder="0x00000...">
 					        				<label>JSON Interface</label>
-					        				<textarea></textarea>								        	
-						        			<input class="sendModal" type="submit" value="Send Contract">							        		
+					        				<textarea id="contractCode"></textarea>								        	
+						        			<input class="sendModal" type="submit" onclick="watchContract()">							        		
 							        	</form>
 						        	</div>
 	        					</div>
 	        					<div class="modal-footer">
-						          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						          <button type="button" class="btn btn-default" data-dismiss="modal" onclick="ClearContract()">Cancel</button>
 	        					</div>
 					       </div>      
 	    				</div>
@@ -337,7 +331,7 @@
 		      	
 	      		<div>
 		      		<div class="row contract3 mBotton40 mLeft0">
-	      				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 contractButton" data-toggle="modal" data-target="#myModal2">
+	      				<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 contractButton" data-toggle="modal" data-target="#myModal" onclick="ClearContract()">
 			      			<span><img src="./images/contracts-token.png" />&nbsp;&nbsp;
 			      			WATCH TOKEN</span>
 			      		</div>
@@ -350,34 +344,7 @@
 		      		</div>
 		      		
 		      		
-				    <!-- Modal -->
-				    <div class="modal fade" id="myModal2" role="dialog">
-				    	<div class="modal-dialog">    
-	      				<!-- Modal content-->
-					    	<div class="modal-content">
-	        					<div class="modal-header">
-	          						<button type="button" class="close" data-dismiss="modal">&times;</button>
-	          						<h2 class="modal-title">Watch token</h2>
-	        					</div>
-	        					<div class="modal-body">
-        							<div class="left15">
-		        						<form action="">
-								        	<label>Contract Name</label>
-								        	<input class="width100" type="text" placeholder="name this contract">
-								        	<label>Contract Adress</label>
-								        	<input class="width100" type="text" placeholder="0x00000...">
-								        	<label>JSON Interface</label>
-								        	<textarea></textarea>
-								        	<input class="sendModal" type="submit" value="Send Contract">
-							        	</form>
-	        						</div>
-	        					</div>
-	        					<div class="modal-footer">
-						          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        					</div>
-					       </div>      
-	    				</div>
-	  				</div>  
+				    
 		      	</div>
 		      	
 	    	</div>
@@ -468,6 +435,8 @@
 			BITCOIN : "bitcoin ",
 			EARTHDOLLAR : "earth dollar "
 	};
+	
+	var contractCompileSetting; //contract bytecode=1, sourcecode=0
 
 	function writeFiat(currentCurrency){
 	    alert('Disbaled');
@@ -536,9 +505,16 @@
 	function Password(sender) {	   
 	   var pwd = $('#senderPassword').val();	   
 	   var unlock_time = $('#unlockTime').val();	
-		var msg = web3.personal.unlockAccount(sender, pwd, unlock_time);
-		$('#senderPassword').val("");
-		return msg; 		
+	   var msg = web3.personal.unlockAccount(sender, pwd, unlock_time);
+	   $('#senderPassword').val("");
+	   return msg; 		
+	}
+	
+	function Deploy() {
+	    var sender = $('#contract_sender').val();
+	    var amount = $('#contract_amount').val();
+	    var contract = $('#contract_data').val();
+        alert("sender: "+sender+" amount: "+amount+"data: "+contract);		
 	}
 	
 	function Send() {	 
@@ -550,25 +526,62 @@
 	    //verify all 3 above
 	    if(Password(sender)) {	  	        
 	        var transaction = ED.sendTransaction({from:sender, to:recipient, value: web3.toSeed(amount,'tree'), data:web3.toHex('sendData')});
-	        //web3.personal.lockAccount(sender);
-	        alert("transaction number: "+transaction);
+	        web3.personal.lockAccount(sender);	        
 	    } else {
 	        alert("Password Incorrect");
 	      } 
 	    document.getElementById('popup2').style.visibility = 'hidden';   
 	}
 	
+	function watchContract() {
+	    var contract_name = $('#contractName').val();
+		var contract_address = $('#contractAddress').val();
+		var contract_code = $('#contractCode').val();
+	    alert("Contract Name: "+contract_name+" Contract Address: "+contract_address+" Contract Code: "+contract_code);
+		/*
+		if(contractCompileSetting) {
+		    var compiled = web3.eth.compile.solidity(contract_code); 
+		} else {
+		    compiled = contract_code;
+		}	
+        var code = compiled.code;
+        // contract json abi, this is autogenerated using solc CLI
+        var abi = compiled.info.abiDefinition;
+		
+		
+		ED.contract(abi).new({data: code}, function (err, contract) {
+            if(err) {
+                alert("Contract Error");            
+
+            // callback fires twice, we only want the second call when the contract is deployed
+            } else if(contract.address){
+                alert("Contract Address: "+contract.address);
+            }
+        });
+		*/
+	}
+	
+	function ClearContract() {
+	    $('#contractName').val("");
+		$('#contractAddress').val("");
+		$('#contractCode').val("");
+	}
+	
+	function Compile(i) {
+	    contractCompileSetting = i;
+		}
+		
 	window.onload = Init;
 	function Init(){
-	   document.getElementById('popup').style.visibility = 'hidden';
-	   document.getElementById('popup2').style.visibility = 'hidden';
-      document.getElementById('senderPopUp').style.visibility = 'hidden';
-	   document.getElementById('block').innerHTML = ED.blockNumber; 	   
+	    document.getElementById('popup').style.visibility = 'hidden';
+	    document.getElementById('popup2').style.visibility = 'hidden';
+        document.getElementById('senderPopUp').style.visibility = 'hidden';
+	    document.getElementById('block').innerHTML = ED.blockNumber; 	   
 	   
 	   var total_balance = 0.000;	    
 	   var tb_accounts = "<caption>Coinbase: "+ ED.coinbase +"</caption>"; //Coinbase
 		tb_accounts += "<tr><th>Wallet</th><th>Balance</th></tr>"; // Wallets
-		//alert(tb_accounts);
+		
 		for(i=0; i<ED.accounts.length; i++) {		
 		   var balance = ED.getBalance(ED.accounts[i]).toNumber();
 		   total_balance += balance;
