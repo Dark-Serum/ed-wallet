@@ -212,35 +212,30 @@
 						      			<input id="contract_amount" type="text" class="form-control input-lg" placeholder="Amount">						
 									</div>
 	      						</div>
-	      						<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+	      						<!--<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
 	      							<p>0.00 <span class="currency">Earth Dollar: </span> <span>(0.00 <span>ETHER</span>)</span></p>
-	      						</div>
+	      						</div>-->
 	      					</div>
 	      					
-	      					<div class="row wellOutput">
+	      					<!--<div class="row wellOutput">
 	      						<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 well well-sm">
 	      							<p>You want to send <b><span id="outputSent2">0 </span><span class="currency"> Earthdollar</span></b> in Earth Dollar</p>
 	      						</div>
-	      					</div>
-	      					
+	      					</div>-->
+	      					<br/>
 	      					<div class="row">
 	      						<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
 							  		<ul class="nav nav-pills">
-									    <li class="active"><a data-toggle="pill" href="#byteCode">SOLIDITY CONTRACT SOURCE CODE</a></li>
-									    <li><a data-toggle="pill" href="#sourceCode">CONTRACT BY CODE</a></li>						
+									    <li class="active"><a data-toggle="pill">SOLIDITY CONTRACT SOURCE CODE</a></li>
+									    <li><a data-toggle="pill">CONTRACT BY BYTECODE</a></li>					
 									</ul>
 									<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 noLeft">
 										<div class="tab-content">
-										    <div id="byteCode" class="tab-pane fade in active">
+										    <div id="contractCode" class="tab-pane fade in active">
 										    	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 textWidth">
 										      		<textarea name="textfield6" id="textfield4" class="text"></textarea>
 										    	</div>
-										    </div>
-										    <div id="sourceCode" class="tab-pane fade">
-										    	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 textWidth">
-										      		<textarea name="textfield6" id="textfield4" class="text"></textarea>
-										    	</div>
-										    </div>
+										    </div>										    
 										</div>
 									</div>
 									
@@ -257,31 +252,30 @@
 	      						</div>
 	      					</div>
 									
-							<div class="row mTop30">
+							<!--<div class="row mTop30">
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 									<p>Select fee:</p>
 								</div>
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">	
-								  	<div class="jquery-script-clear"></div>
+								  	    <div class="jquery-script-clear"></div>
 								  		<span class="bold">Cheaper</span>
 										<input id="ex4" type="text" data-slider-min="-5" data-slider-max="20" data-slider-step="1" data-slider-value="3">
 										<span class="bold">Faster</span>	
 										<p id="ex4CurrentSliderValLabel" class="mTop20">Current Slider Value: <span id="ex4SliderVal">3</span></p>			
-								</div>
-						   </div>
+								    </div>
+						       </div>
 
 		      				<div class="row">
 		      					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		      						<p>TOTAL:</p>
 		      						<span>0.00 <span class="currency">Earth Dollar </span></span>
-		      					</div>
-		      					
-		      				</div>						      					
+		      					</div>		      					
+		      				</div>-->						      					
 		      						      						      						      						      		
 		      				<div class="row mTop20">	
-		      					<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">	      			
+		      					<!--<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">	      			
 		      						<a href="#" onclick="toWallet()">Back to wallet</a>
-		      					</div>
+		      					</div>-->
 		      					<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 sendMoney">
 		      						<button type="submit" class="btn btn-default mRight30" data-ripple="#fff">Deploy</button>
 		      					</div>
@@ -534,8 +528,8 @@
 	
 		
 	function Password(sender) {	   
-	   var pwd = $('#senderPassword').val();	   
-	   var unlock_time = $('#unlockTime').val();	
+	    var pwd = $('#senderPassword').val();	   
+	    var unlock_time = $('#unlockTime').val();	
 		var msg = web3.personal.unlockAccount(sender, pwd, unlock_time);
 		$('#senderPassword').val("");
 		return msg; 		
@@ -562,20 +556,17 @@
 	function Init(){
 	   document.getElementById('popup').style.visibility = 'hidden';
 	   document.getElementById('popup2').style.visibility = 'hidden';
-      document.getElementById('senderPopUp').style.visibility = 'hidden';
-	   document.getElementById('block').innerHTML = ED.blockNumber; 	   
+       document.getElementById('block').innerHTML = ED.blockNumber; 	   
 	   
-	   var total_balance = 0.000;	    
-	   var tb_accounts = "<caption>Coinbase: "+ ED.coinbase +"</caption>"; //Coinbase
-		tb_accounts += "<tr><th>Wallet</th><th>Balance</th></tr>"; // Wallets
-		//alert(tb_accounts);
+	    var total_balance = 0.000;	    
+	    var tb_accounts = "<caption>Coinbase: "+ ED.coinbase +"</caption>"; //Coinbase
+		tb_accounts += "<tr><th>Wallet</th><th>Balance</th></tr>"; // Wallets		
 		for(i=0; i<ED.accounts.length; i++) {		
 		   var balance = ED.getBalance(ED.accounts[i]).toNumber();
 		   total_balance += balance;
 		   tb_accounts += ("<tr><td>"+ ED.accounts[i] +"</td>" + 
 			"<td>"+ web3.fromSeed(balance,'tree') +"</td></tr>");
-		 }
-		 
+		 }		 
 		 $('#coinbase').append(tb_accounts);
 		 document.getElementById('totalBalance').innerHTML = web3.fromSeed(total_balance, 'tree');	// Total Balance
 	}
