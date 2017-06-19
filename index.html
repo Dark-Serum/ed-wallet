@@ -23,7 +23,7 @@
 			<ul class="nav  nav-tabs">
 				<li class="active"><a data-toggle="tab" href="#home">WALLET</a></li>
 				<li><a data-toggle="tab" href="#menu1">SEND</a></li>
-				<li><a data-toggle="tab" href="#menu2">CONTRACTS</a></li>
+				<!-- <li><a data-toggle="tab" href="#menu2">CONTRACTS</a></li> -->
 			</ul>
 			</div>
 			<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 totalEds">
@@ -179,7 +179,7 @@
              </div>				
 	    	</div>
 	    	
-<!-- contract section-->    	
+<!-- contract section-->   <!-- 	
 	    	<div id="menu2" class="tab-pane fade contracts">
 	      		<div class="row">
 	      			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mBottom1">
@@ -222,7 +222,7 @@
 	      							<p>You want to send <b><span id="outputSent2">0 </span><span class="currency"> Earthdollar</span></b> in Earth Dollar</p>
 	      						</div>
 	      					</div>-->
-	      					<br/>
+	<!--      					<br/>
 	      					<div class="row">
 	      						<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
 							  		<ul class="nav nav-pills">
@@ -272,11 +272,11 @@
 		      					</div>		      					
 		      				</div>-->						      					
 		      						      						      						      						      		
-		      				<div class="row mTop20">	
+<!--		      				<div class="row mTop20">	
 		      					<!--<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">	      			
 		      						<a href="#" onclick="toWallet()">Back to wallet</a>
 		      					</div>-->
-		      					<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 sendMoney">
+<!--		      					<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 sendMoney">
 		      						<button type="submit" class="btn btn-default mRight30" data-ripple="#fff" onclick="Deploy()">Deploy</button>
 		      					</div>
 		      				</div>
@@ -298,10 +298,10 @@
 
 
 				    <!-- Modal -->
-				    <div class="modal fade" id="myModal" role="dialog">
+<!--				    <div class="modal fade" id="myModal" role="dialog">
 				    	<div class="modal-dialog">    
 	      				<!-- Modal content-->
-					    	<div class="modal-content">
+<!--					    	<div class="modal-content">
 	        					<div class="modal-header">
 	          						<button type="button" class="close" data-dismiss="modal">&times;</button>
 	          						<h2 class="modal-title">Watch token</h2>
@@ -340,15 +340,15 @@
 		      					you have to add their adress to this list. You can create your own token by simply modifying 
 		      					<a href="http://ethereum.github.io/browser-solidity/#gist=319854ee93812ef304ec2af0317b3c74&version=soljson-v0.4.6+commit.2dabbdf0.js" target="_blank">
 <!-- need to be fix -->		      	this example of a custom token contract</a> or learning more about <a href="https://www.ethereum.org/token#the-code" target="_blank">Earth Dollar Tokens</a>.</p>
-		      			</div>
+<!--		      			</div>
 		      		</div>
 		      		
 		      		
 				    <!-- Modal -->
-				    <div class="modal fade" id="myModal2" role="dialog">
+	<!--			    <div class="modal fade" id="myModal2" role="dialog">
 				    	<div class="modal-dialog">    
 	      				<!-- Modal content-->
-					    	<div class="modal-content">
+<!--					    	<div class="modal-content">
 	        					<div class="modal-header">
 	          						<button type="button" class="close" data-dismiss="modal">&times;</button>
 	          						<h2 class="modal-title">Watch token</h2>
@@ -596,7 +596,7 @@
 		for(i=0; i<ED.accounts.length; i++) {		
 		   var balance = ED.getBalance(ED.accounts[i]).toNumber();
 		   total_balance += balance;
-		   tb_accounts += ("<tr><td>"+ ED.accounts[i] +"</td>" + 
+		   tb_accounts += ("<tr><td>"+ ED.accounts[i] +"</td>" +  
 			"<td>"+ web3.fromSeed(balance,'tree') +"</td></tr>");
 		 }		 
 		 $('#coinbase').append(tb_accounts);
