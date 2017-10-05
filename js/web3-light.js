@@ -1790,6 +1790,7 @@ if (typeof XMLHttpRequest === 'undefined') {
 var BigNumber = require('bignumber.js');
 
 var ED_UNITS = [
+    'ed',
     'tree',
     'quarter',
     'dime',
@@ -1927,7 +1928,8 @@ var unitMap = {
     'nickel':  '50000000000000000',		
     'dime':   '100000000000000000',
     'quarter':'250000000000000000',
-    'tree':  '1000000000000000000'
+    'tree':  '1000000000000000000',
+    'ed':    '1000000000000000000'
 };
 
 /**
@@ -2692,7 +2694,7 @@ AllSolidityEvents.prototype.execute = function (options, callback) {
 
     var o = this.encode(options);
     var formatter = this.decode.bind(this);
-    return new Filter(this._requestManager, o, watches.eth(), formatter, callback);
+    return new Filter(this._requestManager, o, watches.ed(), formatter, callback);
 };
 
 AllSolidityEvents.prototype.attachToContract = function (contract) {
@@ -2830,7 +2832,7 @@ var addFunctionsToContract = function (contract) {
     contract.abi.filter(function (json) {
         return json.type === 'function';
     }).map(function (json) {
-        return new SolidityFunction(contract._eth, json, contract.address);
+        return new SolidityFunction(contract._ed, json, contract.address);
     }).forEach(function (f) {
         f.attachToContract(contract);
     });
@@ -2848,11 +2850,11 @@ var addEventsToContract = function (contract) {
         return json.type === 'event';
     });
 
-    var All = new AllEvents(contract._eth._requestManager, events, contract.address);
+    var All = new AllEvents(contract._ed._requestManager, events, contract.address);
     All.attachToContract(contract);
 
     events.map(function (json) {
-        return new SolidityEvent(contract._eth._requestManager, json, contract.address);
+        return new SolidityEvent(contract._ed._requestManager, json, contract.address);
     }).forEach(function (e) {
         e.attachToContract(contract);
     });
@@ -2872,7 +2874,7 @@ var checkForContractAddress = function(contract, callback){
         callbackFired = false;
 
     // wait for receipt
-    var filter = contract._eth.filter('latest', function(e){
+    var filter = contract._ed.filter('latest', function(e){
         if (!e && !callbackFired) {
             count++;
 
@@ -2890,10 +2892,10 @@ var checkForContractAddress = function(contract, callback){
 
             } else {
 
-                contract._eth.getTransactionReceipt(contract.transactionHash, function(e, receipt){
+                contract._ed.getTransactionReceipt(contract.transactionHash, function(e, receipt){
                     if(receipt && !callbackFired) {
 
-                        contract._eth.getCode(receipt.contractAddress, function(e, code){
+                        contract._ed.getCode(receipt.contractAddress, function(e, code){
                             /*jshint maxcomplexity: 6 */
 
                             if(callbackFired || !code)
@@ -2973,7 +2975,7 @@ var ContractFactory = function (ed, abi) {
         if (callback) {
 
             // wait for the contract address adn check if the code was deployed
-            this.eth.sendTransaction(options, function (err, hash) {
+            this.ed.sendTransaction(options, function (err, hash) {
                 if (err) {
                     callback(err);
                 } else {
@@ -2987,7 +2989,7 @@ var ContractFactory = function (ed, abi) {
                 }
             });
         } else {
-            var hash = this.eth.sendTransaction(options);
+            var hash = this.ed.sendTransaction(options);
             // add the transaction hash
             contract.transactionHash = hash;
             checkForContractAddress(contract);
@@ -3022,7 +3024,7 @@ var ContractFactory = function (ed, abi) {
  * otherwise calls callback function (err, contract)
  */
 ContractFactory.prototype.at = function (address, callback) {
-    var contract = new Contract(this.eth, this.abi, address);
+    var contract = new Contract(this.ed, this.abi, address);
 
     // this functions are not part of prototype,
     // because we dont want to spoil the interface
@@ -3062,7 +3064,7 @@ ContractFactory.prototype.getData = function () {
  * @param {Array} abi
  * @param {Address} contract address
  */
-var Contract = function (eth, abi, address) {
+var Contract = function (ed, abi, address) {
     this._ed = ed;
     this.transactionHash = null;
     this.address = address;
@@ -3300,7 +3302,7 @@ SolidityEvent.prototype.execute = function (indexed, options, callback) {
     
     var o = this.encode(indexed, options);
     var formatter = this.decode.bind(this);
-    return new Filter(this._requestManager, o, watches.eth(), formatter, callback);
+    return new Filter(this._requestManager, o, watches.ed(), formatter, callback);
 };
 
 /**
@@ -3935,7 +3937,7 @@ var sha3 = require('../utils/sha3');
 /**
  * This prototype should be used to call/sendTransaction to solidity functions
  */
-var SolidityFunction = function (eth, json, address) {
+var SolidityFunction = function (ed, json, address) {
     this._ed = ed;
     this._inputTypes = json.inputs.map(function (i) {
         return i.type;
@@ -4016,12 +4018,12 @@ SolidityFunction.prototype.call = function () {
 
 
     if (!callback) {
-        var output = this._eth.call(payload, defaultBlock);
+        var output = this._ed.call(payload, defaultBlock);
         return this.unpackOutput(output);
     } 
         
     var self = this;
-    this._eth.call(payload, defaultBlock, function (error, output) {
+    this._ed.call(payload, defaultBlock, function (error, output) {
         callback(error, self.unpackOutput(output));
     });
 };
@@ -4037,10 +4039,10 @@ SolidityFunction.prototype.sendTransaction = function () {
     var payload = this.toPayload(args);
 
     if (!callback) {
-        return this._eth.sendTransaction(payload);
+        return this._ed.sendTransaction(payload);
     }
 
-    this._eth.sendTransaction(payload, callback);
+    this._ed.sendTransaction(payload, callback);
 };
 
 /**
@@ -4054,10 +4056,10 @@ SolidityFunction.prototype.estimateGas = function () {
     var payload = this.toPayload(args);
 
     if (!callback) {
-        return this._eth.estimateGas(payload);
+        return this._ed.estimateGas(payload);
     }
 
-    this._eth.estimateGas(payload, callback);
+    this._ed.estimateGas(payload, callback);
 };
 
 /**
@@ -5445,7 +5447,7 @@ var Net = function (web3) {
     });
 };
 
-/// @returns an array of objects describing web3.eth api properties
+/// @returns an array of objects describing web3.ed api properties
 var properties = function () {
     return [
         new Property({
@@ -5670,7 +5672,7 @@ module.exports = Shh;
 
 var Method = require('../method');
 
-/// @returns an array of objects describing web3.eth.filter api methods
+/// @returns an array of objects describing web3.ed.filter api methods
 var ed = function () {
     var newFilterCall = function (args) {
         var type = args[0];
@@ -6356,23 +6358,23 @@ var exchangeAbi = require('../contracts/SmartExchange.json');
  * @param {Value} value to be tranfered
  * @param {Function} callback, callback
  */
-var transfer = function (eth, from, to, value, callback) {
+var transfer = function (ed , from, to, value, callback) {
     var iban = new Iban(to); 
     if (!iban.isValid()) {
         throw new Error('invalid iban address');
     }
 
     if (iban.isDirect()) {
-        return transferToAddress(eth, from, iban.address(), value, callback);
+        return transferToAddress(ed, from, iban.address(), value, callback);
     }
     
     if (!callback) {
         var address = ed.icapNamereg().addr(iban.institution());
-        return deposit(eth, from, address, value, iban.client());
+        return deposit(ed, from, address, value, iban.client());
     }
 
     ed.icapNamereg().addr(iban.institution(), function (err, address) {
-        return deposit(eth, from, address, value, iban.client(), callback);
+        return deposit(ed, from, address, value, iban.client(), callback);
     });
     
 };
@@ -6386,7 +6388,7 @@ var transfer = function (eth, from, to, value, callback) {
  * @param {Value} value to be tranfered
  * @param {Function} callback, callback
  */
-var transferToAddress = function (eth, from, to, value, callback) {
+var transferToAddress = function (ed, from, to, value, callback) {
     return ed.sendTransaction({
         address: to,
         from: from,
@@ -6404,7 +6406,7 @@ var transferToAddress = function (eth, from, to, value, callback) {
  * @param {String} client unique identifier
  * @param {Function} callback, callback
  */
-var deposit = function (eth, from, to, value, client, callback) {
+var deposit = function (ed, from, to, value, client, callback) {
     var abi = exchangeAbi;
     return ed.contract(abi).at(to).deposit(client, {
         from: from,
